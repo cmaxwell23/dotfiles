@@ -1,0 +1,8 @@
+.DS_Store
+tmux/plugins/
+raycast
+fzf
+.zsh_history
+selected
+.zcompdump-*
+atuin/atuin-receipt.json
