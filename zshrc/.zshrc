@@ -31,10 +31,6 @@ alias gbr='git branch | grep -v "master" | xargs git branch -D'
 
 export GPG_TTY=$(tty)
 
-git config --global commit.gpgsign true
-git config --global user.signingkey 44E12DFA06DED15F
-git config --global gpg.program $(which gpg)
-
 # Docker
 alias docker-prune-cow='rm -fr ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2'
 alias docker-rmi='docker rmi $(docker images -q)'
