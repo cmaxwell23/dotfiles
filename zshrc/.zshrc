@@ -50,6 +50,9 @@ alias ......="cd ../../../../.."
 # Go
 export PATH=$PATH:$(go env GOPATH)/bin
 
+# Local bin
+export PATH=$PATH:~/.local/bin
+
 # Local dev
 export GITHUB_DEPLOY_KEY=$(exec cat ~/.ssh/id_rsa)
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
