@@ -1,7 +1,21 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """$directory$character"""
+# format = """$directory$character"""
+format = """
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$cmd_duration\
+$line_break\
+$status\
+$shell\
+$character"""
+
 palette = "catppuccin_mocha"
 right_format = """$all"""
 
@@ -11,6 +25,27 @@ add_newline = false
 # Replace the '❯' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
 success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+error_symbol = "[❯*](bold red)"
+
+[directory]
+truncation_length = 5
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = ""
+
+[git_metrics]
+disabled = false
+
+[line_break]
+disabled = true
+
+# Show status code
+[status]
+disabled = false
+format='[\[$symbol$status\]]($style) '
+symbol='exit code '
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -44,9 +79,6 @@ base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
 
-[git_branch]
-format = '[$symbol$branch(:$remote_branch)]($style)'
-
 [aws]
 format = '[$symbol(profile: "$profile" )(\(region: $region\) )]($style)'
 disabled = false
@@ -55,15 +87,6 @@ symbol = " "
 
 [golang]
 format = '[ ](bold cyan)'
-
-[kubernetes]
-symbol = '☸ '
-disabled = true
-detect_files = ['Dockerfile']
-format = '[$symbol$context( \($namespace\))]($style) '
-contexts = [
-  { context_pattern = "arn:aws:eks:us-west-2:577926974532:cluster/zd-pvc-omer", style = "green", context_alias = "omerxx", symbol = " " },
-]
 
 [docker_context]
 disabled = true
